@@ -472,6 +472,23 @@ print(tan_deg(45))
 
 '''
 
+# String Templates
+from string import Template
+s = Template("Hallo ist bin $name. Ich bin sehr klug") # German -> Eglish : Hello i am "name", I am very smart
+sentence = s.substitute(name="Leonardo da Vinci")
+print(sentence)
+
+s2 = Template("Der Hund ist Name: $hund_name und die katze Name: $Katze_name")
+sentence2 = s2.safe_substitute(hund_name = "Cooper")
+print(sentence2) # will not throw error for missing Katze_name and will leave it as is
+sentence3 = s2.safe_substitute(hund_name = "Cooper",Katze_name="Luna")
+print(sentence3)
+
+
+
+
+
+
 
 
 
