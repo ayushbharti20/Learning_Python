@@ -472,6 +472,7 @@ print(tan_deg(45))
 
 '''
 
+'''
 # String Templates
 from string import Template
 s = Template("Hallo ist bin $name. Ich bin sehr klug") # German -> Eglish : Hello i am "name", I am very smart
@@ -484,11 +485,46 @@ print(sentence2) # will not throw error for missing Katze_name and will leave it
 sentence3 = s2.safe_substitute(hund_name = "Cooper",Katze_name="Luna")
 print(sentence3)
 
+'''
+'''
+# Reading and Writing Files
+
+# r = readmode , w = writemode , a = appendmode(opens the file for appending , any data writen in the file will be automatically added to the end) , r+ = read and write mode , b = binary mode(Binary mode data is read and written as bytes objects. You can not specify encoding when opening file in binary mode.)
+with open("file.txt","r") as file: # open the file in read mode
+    content = file.read() # read the entire content of the file
+    print(content)
+    print(file.readline()) # read a single line from the file
+    print(file.readline())
+    #file.close() is not required as with statement automatically closes the file
+
+with open("file.txt","r") as file:
+    for line in file: # read the file line by line
+        print(line,end='') 
 
 
 
+with open("file.txt","w") as file: # open the file in write mode
+    print(file.write("This is a new line added to the file.\n")) 
+    print(file.write("This is another line added to the file.\n"))
+    # it will return the number of characters written to the file
+    # it will also overwrite the existing content of the file
+    print(file.tell()) # return the current position of the file pointer as an integer which is the number of characters from the beginning of the file
+     
 
 
+with open("file.txt","r+") as file: # open the file in read and write mode. r+ doen not overwrite the existing content of the file
+    print("Previous: ",file.read())
+
+    file.write("This is line one.\n")
+    print("Current Position: ",file.tell())
+
+    file.write("This is line two.\n")
+    print("New Position: ",file.tell())
+    
+    file.seek(0)
+    print("Current: ",file.read())
+
+'''
 
 
 
