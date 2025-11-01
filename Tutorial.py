@@ -564,7 +564,7 @@ except NameError:
     print("An exception occured as we raised it manually")
     raise
 
-'''
+
 
 # Exception chaining
 try:
@@ -574,11 +574,37 @@ except ValueError :
     raise RuntimeError("Another error raised while handling ValueError") from None # hides the ValueError 
 
 
+def func():
+    raise ValueError
+try:
+    func()
+except ValueError as e:
+    raise RuntimeError("Error in func") from e # will show = The above exception was the direct cause of the following exception
+
+
+# Multiple exceptions handling
+def func():
+    raise ExceptionGroup("Multiple errors",[ValueError("invalid value"),TypeError("wrong type"),KeyError("missing key")])
+try:
+    func()
+except* ValueError as e:
+    print("Caught ValueError:",e)
+except* TypeError as e:
+    print("Caught TypeError:",e)
+except* KeyError as e:
+    print("Caught KeyError:",e)
 
 
 
 
+try:
+    raise TypeError("wrong type")
+except Exception as e:
+    e.add_note("This is additional information about the error.")
+    print(e.__notes__) # will also show notes when re raise is not done
+    raise
 
+'''
 
 
 
