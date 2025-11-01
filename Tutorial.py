@@ -526,6 +526,65 @@ with open("file.txt","r+") as file: # open the file in read and write mode. r+ d
 
 '''
 
+'''
+# Error and Exception Handling
+
+while True:
+    try:
+        x = int(input("Please enter a number: "))
+        break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+
+
+
+try:
+    with open("non_existent_file.txt","r") as file:
+        print(file.read())
+except FileNotFoundError as e:
+    print("Error:",e) # e is the exception object that contains information about the error
+
+
+
+
+try :
+    x = int(input("Enter a number:"))
+except ValueError as e:
+    print("Invalid input type:",e)
+else:
+    print("no exception were raised")
+finally:
+    print("Always exceuted.")
+
+
+
+try:
+    raise NameError("This is a error we raised manually")
+except NameError:
+    print("An exception occured as we raised it manually")
+    raise
+
+'''
+
+# Exception chaining
+try:
+    num = int(input("Enter a number: "))
+except ValueError :
+    #raise RuntimeError("Another error raised while handling ValueError")
+    raise RuntimeError("Another error raised while handling ValueError") from None # hides the ValueError 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
