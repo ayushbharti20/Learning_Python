@@ -604,7 +604,45 @@ except Exception as e:
     print(e.__notes__) # will also show notes when re raise is not done
     raise
 
+
+
+# Classes and objects
+
+# scope and namespace 
+def scope():
+    def do_local():
+        spam = "local spam"
+        print("Local scope :",spam)
+    def do_nonlocal():
+        nonlocal spam
+        spam = "non local spam"
+    def do_global():
+        global spam
+        spam = "global spam"
+    
+    spam = "spam"
+    do_local()
+    print(spam)
+    do_nonlocal()
+    print(spam)
+    do_global()
+    print(spam)
+
+scope()
+print("The global scope :",spam)
+
+
+
+class Complex():
+    def __init__(self,real,imag):
+        self.real = real
+        self.imag = imag
+x = Complex(1,4)
+print(f"{x.real} + {x.imag}i")
+
 '''
+
+
 
 
 
