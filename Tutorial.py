@@ -604,7 +604,9 @@ except Exception as e:
     print(e.__notes__) # will also show notes when re raise is not done
     raise
 
+'''
 
+'''
 
 # Classes and objects
 
@@ -640,11 +642,43 @@ class Complex():
 x = Complex(1,4)
 print(f"{x.real} + {x.imag}i")
 
+
+
+class Dog:
+    trick = []
+    def __init__(self,name):
+        self.name = name
+
+    def add_trick(self,trick_name):
+        self.trick.append(trick_name)
+    
+dog1 = Dog("german shepherd")
+dog2 = Dog("bulldog")
+dog1.add_trick("roll over")
+dog2.add_trick("play dead")
+# Trick is shared among all instances because trick is a class variable
+print(dog1.trick)
+print(dog2.trick)
+
+
+
+class Dog:
+    def __init__(self,name):
+        self.name = name
+        self.trick = []
+    def add_trick(self,trick_name):
+        self.trick.append(trick_name)
+    
+dog1 = Dog("german shepherd")
+dog2 = Dog("bulldog")
+dog1.add_trick("roll over")
+dog2.add_trick("play dead")
+# Trick is unique to each instance because trick is an instance variable
+print(dog1.trick)
+print(dog2.trick)
+
+
 '''
-
-
-
-
 
 
 
